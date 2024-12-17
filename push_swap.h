@@ -6,7 +6,7 @@
 /*   By: ggasset- <ggasset-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 18:33:45 by ggasset-          #+#    #+#             */
-/*   Updated: 2024/12/16 18:08:03 by ggasset-         ###   ########.fr       */
+/*   Updated: 2024/12/17 16:59:08 by ggasset-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ t_crc_nd	*get_next_valued(t_crc_nd *head, t_crc_nd *start, int head_start);
 void		sa(t_data *stacks, int write_instruction);
 void		sb(t_data *stacks, int write_instruction);
 void		ss(t_data *stacks);
-void		pa(t_data *stacks, int write_instruction);
-void		pb(t_data *stacks, int write_instruction);
+void		pa(t_data *stacks);
+void		pb(t_data *stacks);
 void		ra(t_data *stacks, int write_instruction);
 void		rb(t_data *stacks, int write_instruction);
 void		rr(t_data *stacks);
