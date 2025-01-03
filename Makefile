@@ -19,11 +19,11 @@ C_FILES= init.c s.c utils.c
 O_FILES= init.o s.o utils.o
 
 CC_SECURITY_FLAGS= -Wall -Wextra -Werror
-CC_FLAGS= -g #-fanalyzer
+CC_FLAGS= -lc -g #-fanalyzer
 
 LOGO=\n ▗▄▄▄▄▖    ▗▄▄▄▄▖\n▐▌        ▐▌ \n▐▌ ▝▝▜▌   ▐▌ ▝▝▜▌\n▝▚▄▄▄▞▘   ▝▚▄▄▄▞▘     \n
 
-all: libs-all ${NAME} logo
+all: libft ${NAME} logo
 
 ${NAME}: ${O_FILES} ${ARCHIVES}
 	cc ${minilibx_LINKING_FLAGS} -o ${NAME} ${O_FILES} ${ARCHIVES}
