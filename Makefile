@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME=fractol
+NAME=push_swap
 
 libft_NAME=./libft/libft.a
 ARCHIVES= ${libft_NAME}
