@@ -6,7 +6,7 @@
 /*   By: ggasset- <ggasset-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 16:17:46 by ggasset-          #+#    #+#             */
-/*   Updated: 2024/12/16 16:59:08 by ggasset-         ###   ########.fr       */
+/*   Updated: 2025/01/13 16:58:35 by ggasset-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,36 @@ t_crc_nd	*circular_list_init(size_t node_count)
 	if (tmp)
 		tmp->next = out;
 	else if (!tmp && out)
-		free_list(out);
+		free_list(&out, i);
 	return (out);
+}
+
+void	free_list(t_crc_nd **lst, size_t node_count)
+{
+	t_crc_nd	*tmp;
+	t_crc_nd	*tmp1;
+	size_t		i;
+
+	if (!lst)
+		return ;
+	if (!*lst)
+		return ;
+	tmp = *lst;
+	i = 0;
+	while (i < node_count && tmp)
+	{
+		tmp1 = tmp->next;
+		free(tmp);
+		tmp = tmp1;
+		i++;
+	}
+	*lst = 0;
+}
+
+void	move_constructor(t_move *move, t_data *stacks)
+{
+	move->a_len = stacks->a_size;
+	move->b_len = stacks->b_size;
+	move->median_a = stacks->a_size / 2;
+	move->median_b = stacks->b_size / 2;
 }
