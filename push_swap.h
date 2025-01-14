@@ -33,8 +33,8 @@ typedef struct s_move
 
 typedef struct s_crc_nd
 {
-	t_crc_nd	*next;
-	t_crc_nd	*prev;
+	struct s_crc_nd	*next;
+	struct s_crc_nd	*prev;
 	int			val;
 	char		contains_val;
 }		t_crc_nd;

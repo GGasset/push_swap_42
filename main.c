@@ -14,12 +14,12 @@
 
 int	main(int argc, char *argv[])
 {
-	int		*nbrs;
-	t_data	stacks;
-	t_data	*tmp_pntr;
+	int			*nbrs;
+	t_data		stacks;
+	t_crc_nd	*tmp_pntr;
 
 	nbrs = parse_args(argc, argv);
-	if (!nbrs || nbrs == 1)
+	if (!nbrs || (size_t)nbrs == 1)
 	{
 		if (!nbrs)
 			ft_putendl_fd("Error", 2);
@@ -31,9 +31,9 @@ int	main(int argc, char *argv[])
 	stacks.b = circular_list_init(argc - 1);
 	free(nbrs);
 	mech_turkish(&stacks);
-	tmp_pntr = &stacks.a;
+	tmp_pntr = stacks.a;
 	free_list(&tmp_pntr, argc - 1);
-	tmp_pntr = &stacks.b;
+	tmp_pntr = stacks.b;
 	free_list(&tmp_pntr, argc - 1);
 	return (0);
 }
