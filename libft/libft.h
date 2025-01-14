@@ -6,7 +6,7 @@
 /*   By: ggasset- <ggasset-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 15:06:22 by ggasset-          #+#    #+#             */
-/*   Updated: 2024/12/16 16:55:48 by ggasset-         ###   ########.fr       */
+/*   Updated: 2025/01/10 12:37:17 by ggasset-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ double	ft_atod(char *str);
 float	ft_atof_s(char *str, int *error);
 float	ft_atof(char *str);
 int		ft_atoi(const char *nptr);
+int		ft_atoi_s(const char *nptr, int *err);
 
 void	*ft_calloc(size_t nmeb, size_t size);
 char	*ft_strdup(const char *s);
