@@ -29,19 +29,39 @@ size_t		get_sorted_position(t_crc_nd *head, int nbr)
 	t_crc_nd	*iter;
 	size_t		sort_i;
 	int			just_bigger;
-	int			i;
+	int			i[2];
 
 	sort_i = 0;
-	just_bigger = -2147483648;
+	just_bigger = 2147483647;
+	iter = head;
+	i[0] = 0;
+	i[1] = 0;
+	while (iter->contains_val && (iter != head || !i[0]))
+	{
+		i[1] += iter->val > nbr && iter->val < just_bigger;
+		sort_i += (i[0] - sort_i) * (iter->val > nbr && iter->val < just_bigger);
+		just_bigger += (iter->val - just_bigger)
+			* (iter->val > nbr && iter->val < just_bigger);
+		iter = iter->next;
+		i[0]++;
+	}
+	if (!i[1])
+		sort_i = get_min_i(head);
+	return (sort_i);
+}
+
+void	print_list(t_crc_nd *head)
+{
+	t_crc_nd	*iter;
+	int			i;
+
 	iter = head;
 	i = 0;
 	while (iter->contains_val && (iter != head || !i))
 	{
-		sort_i += (i - sort_i) * (iter->val > nbr && iter->val < just_bigger);
-		just_bigger += (iter->val - just_bigger)
-			* (iter->val > nbr && iter->val < just_bigger);
+		ft_putnbr_fd(iter->val, 1);
+		ft_putstr_fd("\n", 1);
 		iter = iter->next;
 		i++;
 	}
-	return (sort_i);	
 }

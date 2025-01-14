@@ -31,6 +31,7 @@ int	main(int argc, char *argv[])
 	stacks.b = circular_list_init(argc - 1);
 	free(nbrs);
 	mech_turkish(&stacks);
+	print_list(stacks.a);
 	tmp_pntr = stacks.a;
 	free_list(&tmp_pntr, argc - 1);
 	tmp_pntr = stacks.b;

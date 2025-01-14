@@ -15,9 +15,11 @@
 void	theoretic_move(t_move *move)
 {
 	move->a_pos += move->a_move;
-	move->a_pos = move->a_len % move->a_pos;
+	if (move->a_pos)
+		move->a_pos = move->a_len % move->a_pos;
 	move->b_pos += move->b_move;
-	move->b_pos = move->b_len % move->b_pos;
+	if (move->b_pos)
+		move->b_pos = move->b_len % move->b_pos;
 }
 
 void	get_move(t_move *move)

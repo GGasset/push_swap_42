@@ -71,6 +71,7 @@ void		real_move(t_data *stacks, t_move *move);
 void		theoretic_move(t_move *move);
 
 int			is_sorted(t_crc_nd *head, int ascending, int skip_empty);
+void		print_list(t_crc_nd *head);
 
 t_crc_nd	*intitialize_stack(int *nbrs, size_t value_count);
 t_crc_nd	*circular_list_init(size_t node_count);
@@ -81,7 +82,8 @@ t_crc_nd	*get_next_valued(t_crc_nd *head, t_crc_nd *start, int head_start);
 t_crc_nd	*get_prev_valued(t_crc_nd *start);
 t_crc_nd	*get_last_valued(t_crc_nd *head);
 t_crc_nd	*get_i(t_crc_nd *head, size_t i);
-size_t		get_minimum_value_i(t_crc_nd *head);
+size_t		get_max_i(t_crc_nd *head);
+size_t		get_min_i(t_crc_nd *head);
 
 void		sa(t_data *stacks, int write_instruction);
 void		sb(t_data *stacks, int write_instruction);

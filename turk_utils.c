@@ -64,7 +64,7 @@ void	sort_three(t_data *stacks)
 	}
 }
 
-size_t	get_minimum_value_i(t_crc_nd *head)
+size_t	get_min_i(t_crc_nd *head)
 {
 	int			min_value;
 	size_t		min_value_i;

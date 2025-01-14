@@ -62,3 +62,24 @@ t_crc_nd	*get_i(t_crc_nd *head, size_t i)
 	}
 	return (out);
 }
+
+size_t	get_max_i(t_crc_nd *head)
+{
+	int			max_value;
+	size_t		max_value_i;
+	size_t		i;
+	t_crc_nd	*iter;
+
+	iter = head;
+	max_value = -2147483648;
+	max_value_i = 0;
+	i = 0;
+	while (iter->contains_val && (i == 0 || iter != head))
+	{
+		max_value_i += (i - max_value_i) * (iter->val > max_value);
+		max_value += (iter->val - max_value) * (iter->val > max_value);
+		iter = iter->next;
+		i++;
+	}
+	return (max_value_i);
+}

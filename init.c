@@ -51,7 +51,10 @@ t_crc_nd	*circular_list_init(size_t node_count)
 		i++;
 	}
 	if (tmp)
+	{
 		tmp->next = out;
+		out->prev = tmp;
+	}
 	else if (!tmp && out)
 		free_list(&out, i);
 	return (out);

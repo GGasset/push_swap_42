@@ -23,6 +23,7 @@ void	move_cheapest(t_data *stacks)
 		get_move(&move);
 		real_move(stacks, &move);
 	}
+	pb(stacks);
 }
 
 void	move_to_a(t_data *stacks)
@@ -51,9 +52,9 @@ void	rotate_a_to_finish(t_data *stacks)
 	size_t	min_value_i;
 	int		before_median;
 
-	min_value_i = get_minimum_value_i(stacks->a);
+	min_value_i = get_min_i(stacks->a);
 	before_median = min_value_i <= stacks->a_size / 2;
-	while (min_value_i + 1 && before_median)
+	while (min_value_i && before_median)
 	{
 		ra(stacks, TRUE);
 		min_value_i--;
@@ -80,7 +81,13 @@ void	mech_turkish(t_data *stacks)
 		move_cheapest(stacks);
 	if (stacks->a_size == 3)
 		sort_three(stacks);
+	print_list(stacks->a);
+	ft_putstr_fd("\n", 1);
 	while (stacks->b_size)
+	{
 		move_to_a(stacks);
+		print_list(stacks->a);
+		ft_putstr_fd("\n", 1);
+	}
 	rotate_a_to_finish(stacks);
 }
