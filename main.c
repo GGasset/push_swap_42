@@ -19,10 +19,9 @@ int	main(int argc, char *argv[])
 	t_crc_nd	*tmp_pntr;
 
 	nbrs = parse_args(argc, argv);
-	if (!nbrs || (size_t)nbrs == 1)
+	if (!nbrs)
 	{
-		if (!nbrs)
-			ft_putendl_fd("Error", 2);
+		ft_putendl_fd("Error", 2);
 		return (0);
 	}
 	ft_bzero(&stacks, sizeof(t_data));

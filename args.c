@@ -46,7 +46,7 @@ int	*parse_args(int argc, char **argv)
 	size_t	i;
 
 	if (check_args(argc, argv))
-		return (check_args(argc, argv) - 1);
+		return ((int *)0);
 	nbrs = ft_calloc(argc - 1, sizeof(int));
 	if (!nbrs)
 		return (0);
@@ -79,7 +79,7 @@ int	*check_args(int argc, char **argv)
 		while (argv[i][j])
 		{
 			c = argv[i][j];
-			if (!ft_isdigit(c) || c == '-' || c == '+')
+			if (!ft_isdigit(c) && !(c == '-' || c == '+'))
 				return ((int *)1);
 			j++;
 		}
