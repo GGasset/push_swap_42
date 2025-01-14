@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-static int	free_nbrs(int *nbrs)
+static int	*free_nbrs(int *nbrs)
 {
 	free(nbrs);
 	return (0);
@@ -44,7 +44,6 @@ int	*parse_args(int argc, char **argv)
 	int		*nbrs;
 	int		err;
 	size_t	i;
-	size_t	j;
 
 	if (check_args(argc, argv))
 		return (check_args(argc, argv) - 1);
@@ -53,7 +52,7 @@ int	*parse_args(int argc, char **argv)
 		return (0);
 	err = 0;
 	i = 0;
-	while (i < argc - 1 && !err)
+	while (i < (size_t)argc - 1 && !err)
 	{
 		nbrs[i] = ft_atoi_s(argv[i + 1], &err);
 		i++;
@@ -65,26 +64,26 @@ int	*parse_args(int argc, char **argv)
 	return (nbrs);
 }
 
-int	check_args(int argc, char **argv)
+int	*check_args(int argc, char **argv)
 {
 	size_t	i;
 	size_t	j;
 	char	c;
 
 	if (argc <= 2)
-		return (2);
+		return ((int *)1);
 	i = 1;
-	while (i < argc)
+	while (i < (size_t)argc)
 	{
 		j = 0;
 		while (argv[i][j])
 		{
 			c = argv[i][j];
 			if (!ft_isdigit(c) || c == '-' || c == '+')
-				return (1);
+				return ((int *)1);
 			j++;
 		}
 		i++;
 	}
-	return (0);
+	return ((int *)0);
 }

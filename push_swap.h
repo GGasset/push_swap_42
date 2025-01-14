@@ -50,7 +50,7 @@ typedef struct s_data
 
 int			main(int argc, char *argv[]);
 int			*parse_args(int argc, char **argv);
-int			check_args(int argc, char **argv);
+int			*check_args(int argc, char **argv);
 
 void		mech_turkish(t_data *stacks);
 
