@@ -31,6 +31,8 @@ int	main(int argc, char *argv[])
 	free(nbrs);
 	mech_turkish(&stacks);
 	print_list(stacks.a);
+	ft_putendl_fd("\n", 1);
+	ft_putnbr_fd(stacks.mov_count, 1);
 	tmp_pntr = stacks.a;
 	free_list(&tmp_pntr, argc - 1);
 	tmp_pntr = stacks.b;

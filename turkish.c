@@ -36,7 +36,7 @@ void	move_to_a(t_data *stacks)
 	move_constructor(&stacks_data, stacks);
 	sorted_position = get_sorted_position(stacks->a, stacks->b->val);
 	rotation_count = get_r_count(sorted_position, stacks_data, &is_reverse);
-	while (rotation_count)
+	while (rotation_count && sorted_position)
 	{
 		if (is_reverse)
 			rra(stacks, TRUE);
@@ -79,16 +79,24 @@ void	mech_turkish(t_data *stacks)
 			pb(stacks);
 	}
 	while (stacks->a_size > 3)
+	{
 		move_cheapest(stacks);
+		//print_list(stacks->b);
+		//ft_putstr_fd(" b \n", 1);
+	}
+	ft_putendl_fd("cheapest_end\n", 1);
 	if (stacks->a_size == 3)
 		sort_three(stacks);
-	print_list(stacks->a);
-	ft_putstr_fd("\n", 1);
+	ft_putendl_fd("three sorted\n", 1);
+	//print_list(stacks->a);
+	//ft_putstr_fd("\n", 1);
 	while (stacks->b_size)
 	{
 		move_to_a(stacks);
-		print_list(stacks->a);
-		ft_putstr_fd("\n", 1);
+		//print_list(stacks->a);
+		//ft_putstr_fd("\n", 1);
 	}
+	ft_putendl_fd("a_move\n", 1);
 	rotate_a_to_finish(stacks);
+	ft_putendl_fd("rotate_a\n", 1);
 }
