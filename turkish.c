@@ -59,7 +59,7 @@ void	rotate_a_to_finish(t_data *stacks)
 		ra(stacks, TRUE);
 		min_value_i--;
 	}
-	while (min_value_i <= stacks->a_size && !before_median)
+	while (min_value_i < stacks->a_size && !before_median)
 	{
 		rra(stacks, TRUE);
 		min_value_i++;
