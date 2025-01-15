@@ -22,13 +22,13 @@ t_crc_nd	*intitialize_stack(int *nbrs, size_t value_count)
 	if (!stack)
 		return (0);
 	tmp = stack;
-	i = value_count;
-	while (i)
+	i = 0;
+	while (i < value_count)
 	{
-		tmp->val = nbrs[i - 1];
+		tmp->val = nbrs[i];
 		tmp->contains_val = TRUE;
 		tmp = tmp->next;
-		i--;
+		i++;
 	}
 	return (stack);
 }

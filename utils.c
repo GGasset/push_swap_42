@@ -23,7 +23,7 @@ t_crc_nd	*get_next_valued(t_crc_nd *head, t_crc_nd *start, int head_start)
 		return (0);
 	tmp0 = start;
 	search_started = FALSE;
-	while (!tmp0->contains_val && (tmp0 != head || (!search_started)))
+	while ((!tmp0->contains_val && tmp0 != head) || !search_started)
 	{
 		tmp0 = tmp0->next;
 		search_started = TRUE;
@@ -47,7 +47,12 @@ t_crc_nd	*get_prev_valued(t_crc_nd *start)
 
 t_crc_nd	*get_last_valued(t_crc_nd *head)
 {
-	return (get_prev_valued(head));
+	t_crc_nd	*out;
+
+	out = get_prev_valued(head);
+	if (!out)
+		out = head;
+	return (out);
 }
 
 t_crc_nd	*get_i(t_crc_nd *head, size_t i)

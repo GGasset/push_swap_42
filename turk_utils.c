@@ -32,7 +32,7 @@ int	is_sorted(t_crc_nd *head, int ascending, int skip_empty)
 			return (FALSE);
 		prev_nbr = nbr;
 		if (skip_empty)
-			iter = get_next_valued(head, iter, FALSE);
+			iter = get_next_valued(iter, iter, TRUE);
 		else
 			iter = iter->next;
 	}

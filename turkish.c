@@ -75,7 +75,8 @@ void	mech_turkish(t_data *stacks)
 	if (stacks->a_size > 3)
 	{
 		pb(stacks);
-		pb(stacks);
+		if (stacks->a_size > 3)
+			pb(stacks);
 	}
 	while (stacks->a_size > 3)
 		move_cheapest(stacks);
