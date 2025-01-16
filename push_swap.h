@@ -59,6 +59,7 @@ void		sort_three(t_data *stacks);
 void		move_to_a(t_data *stacks);
 void		rotate_a_to_finish(t_data *stacks);
 
+size_t		cheap_a_fill(t_);
 size_t		get_r_count(size_t sorted_pos, t_move move, int *is_reverse);
 size_t		get_sorted_position(t_crc_nd *head, int nbr);
 

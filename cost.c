@@ -14,10 +14,16 @@
 
 void	theoretic_move(t_move *move)
 {
-	move->a_pos += move->a_move;
+	int	sign;
+
+	sign = 1 - 2 * (move->a_move < 0);
+	move->a_pos += sign * (move->a_move != 0);
+	move->a_move -= sign * (move->a_move != 0);
 	if (move->a_pos)
 		move->a_pos = move->a_len % move->a_pos;
-	move->b_pos += move->b_move;
+	sign = 1 - 2 * (move->b_move < 0);
+	move->b_pos += sign * (move->b_move != 0);
+	move->b_move -= sign * (move->b_move != 0);
 	if (move->b_pos)
 		move->b_pos = move->b_len % move->b_pos;
 }

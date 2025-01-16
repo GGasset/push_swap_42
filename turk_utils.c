@@ -109,19 +109,19 @@ size_t	get_target_pos(t_crc_nd *target_stack, int nbr)
 
 void	real_move(t_data *stacks, t_move *move)
 {
-	if (move->a_move == 1 && move->b_move == 1)
+	if (move->a_move >= 1 && move->b_move >= 1)
 		rrr(stacks);
-	else if (move->a_move == -1 && move->b_move == -1)
+	else if (move->a_move <= -1 && move->b_move <= -1)
 		rr(stacks);
 	else
 	{
-		if (move->a_move == 1)
+		if (move->a_move >= 1)
 			rra(stacks, TRUE);
-		else if (move->a_move == -1)
+		else if (move->a_move <= -1)
 			ra(stacks, TRUE);
-		if (move->b_move == 1)
+		if (move->b_move >= 1)
 			rrb(stacks, TRUE);
-		else if (move->b_move == -1)
+		else if (move->b_move <= -1)
 			rb(stacks, TRUE);
 	}
 	theoretic_move(move);
