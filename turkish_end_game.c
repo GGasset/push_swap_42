@@ -1,14 +1,14 @@
-/* ************************************************************************** */
+/******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   turkish_end_game.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ggasset- <ggasset-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ggasset- <ggasset-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 18:37:59 by ggasset-          #+#    #+#             */
-/*   Updated: 2025/01/13 18:56:25 by ggasset-         ###   ########.fr       */
+/*   Updated: 2025/01/16 13:07:52 by ggasset-         ###   ########.fr       */
 /*                                                                            */
-/* ************************************************************************** */
+/******************************************************************************/
 
 #include "push_swap.h"
 
@@ -64,4 +64,48 @@ void	print_list(t_crc_nd *head)
 		iter = iter->next;
 		i++;
 	}
+}
+
+int	get_rotation_move(size_t pos, t_move move, int is_a)
+{
+	int		rotation;
+	int		direction;
+	size_t	median;
+	size_t	len;
+
+	len = move.a_len * (is_a != 0) + move.median_b * !is_a;
+	median = move.median_a * (is_a != 0) + move.median_b * !is_a;
+	direction = 1 - 2 * (pos > median);
+	rotation = pos;
+	if (direction == -1)
+		rotation = len - pos;
+	rotation *= direction;
+	return (rotation);
+}
+
+void	get_cheapest_pa(t_data *stacks, t_move *move)
+{
+	size_t		i;
+	t_crc_nd	*iter;
+	t_move		top_move;
+	t_move		tmp_move;
+
+	ft_memcpy(&top_move, move, sizeof(t_move));
+	top_move.a_move = -2147483647;
+	top_move.b_move = -2147483647;
+	ft_memcpy(&tmp_move, &top_move, sizeof(t_move));
+	i = 0;
+	while (iter)
+	{
+		tmp_move.b_pos = i;
+		tmp_move.b_move = get_rotation_move(i, *move, 0);
+		tmp_move.a_pos = get_sorted_position(stacks->a, iter->val);
+		tmp_move.a_move = get_rotation_move(tmp_move.a_pos, *move, 1);
+		if (ft_abs(tmp_move.b_pos) + (long)ft_abs(tmp_move.a_move)
+			< ft_abs(top_move.a_move) + (long)ft_abs(top_move.b_move))
+			ft_memcpy(&top_move, &tmp_move, sizeof(t_move));
+		iter = get_next_valued(stacks->b, iter, iter == stacks->b);
+		i++;
+	}
+	ft_memcpy(move, &top_move, sizeof(move));
 }

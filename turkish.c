@@ -1,14 +1,14 @@
-/* ************************************************************************** */
+/******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   turkish.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ggasset- <ggasset-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ggasset- <ggasset-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 15:19:28 by ggasset-          #+#    #+#             */
-/*   Updated: 2025/01/13 18:35:50 by ggasset-         ###   ########.fr       */
+/*   Updated: 2025/01/16 13:08:26 by ggasset-         ###   ########.fr       */
 /*                                                                            */
-/* ************************************************************************** */
+/******************************************************************************/
 
 #include "push_swap.h"
 
@@ -26,15 +26,7 @@ void	move_cheapest(t_data *stacks)
 	pb(stacks);
 }
 
-void	move_to_a(t_data *stacks)
-{
-	t_move	stacks_data;
-	size_t	sorted_position;
-	size_t	rotation_count;
-	int		is_reverse;
-
-	move_constructor(&stacks_data, stacks);
-	sorted_position = get_sorted_position(stacks->a, stacks->b->val);
+	/*sorted_position = get_sorted_position(stacks->a, stacks->b->val);
 	rotation_count = get_r_count(sorted_position, stacks_data, &is_reverse);
 	while (rotation_count && sorted_position)
 	{
@@ -43,8 +35,19 @@ void	move_to_a(t_data *stacks)
 		else
 			ra(stacks, TRUE);
 		rotation_count--;
+	}*/
+void	move_to_a(t_data *stacks)
+{
+	t_move	stacks_data;
+
+	while (stacks->b_size)
+	{
+		move_constructor(&stacks_data, stacks);
+		get_cheapest_pa(stacks, &stacks_data);
+		while (stacks_data.a_move || stacks_data.b_pos)
+			real_move(stacks, &stacks_data);
+		pa(stacks);
 	}
-	pa(stacks);
 }
 
 void	rotate_a_to_finish(t_data *stacks)

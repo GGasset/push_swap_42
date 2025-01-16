@@ -1,14 +1,14 @@
-/* ************************************************************************** */
+/******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ggasset- <ggasset-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ggasset- <ggasset-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 18:33:45 by ggasset-          #+#    #+#             */
-/*   Updated: 2025/01/13 18:33:57 by ggasset-         ###   ########.fr       */
+/*   Updated: 2025/01/16 12:58:45 by ggasset-         ###   ########.fr       */
 /*                                                                            */
-/* ************************************************************************** */
+/******************************************************************************/
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
@@ -59,7 +59,8 @@ void		sort_three(t_data *stacks);
 void		move_to_a(t_data *stacks);
 void		rotate_a_to_finish(t_data *stacks);
 
-size_t		cheap_a_fill(t_);
+void		get_cheapest_pa(t_data *stacks, t_move *move);
+int			get_rotation_move(size_t pos, t_move move, int is_a);
 size_t		get_r_count(size_t sorted_pos, t_move move, int *is_reverse);
 size_t		get_sorted_position(t_crc_nd *head, int nbr);
 
