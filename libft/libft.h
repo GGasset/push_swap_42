@@ -35,6 +35,7 @@ enum e_types
 	other_type
 };
 
+int		ft_abs(int n);
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);
 int		ft_isalnum(int c);
