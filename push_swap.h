@@ -6,7 +6,7 @@
 /*   By: ggasset- <ggasset-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 18:33:45 by ggasset-          #+#    #+#             */
-/*   Updated: 2025/01/16 12:58:45 by ggasset-         ###   ########.fr       */
+/*   Updated: 2025/01/17 13:24:26 by ggasset-         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -35,6 +35,7 @@ typedef struct s_crc_nd
 {
 	struct s_crc_nd	*next;
 	struct s_crc_nd	*prev;
+	int			sorted_i;
 	int			val;
 	char		contains_val;
 }		t_crc_nd;
@@ -52,40 +53,23 @@ int			main(int argc, char *argv[]);
 int			*parse_args(int argc, char **argv);
 int			*check_args(int argc, char **argv);
 
-void		mech_turkish(t_data *stacks);
+void		k1(t_data *stacks);
+void		k2(t_data *stacks);
 
-void		move_cheapest(t_data *stacks);
+void		bubble_sort(int *nbrs, size_t n, int ascending);
 void		sort_three(t_data *stacks);
-void		move_to_a(t_data *stacks);
-void		rotate_a_to_finish(t_data *stacks);
-
-void		get_cheapest_pa(t_data *stacks, t_move *move);
-int			get_rotation_move(size_t pos, t_move move, int is_a);
-size_t		get_r_count(size_t sorted_pos, t_move move, int *is_reverse);
-size_t		get_sorted_position(t_crc_nd *head, int nbr);
-
-size_t		get_cheapest(t_data *stacks, size_t *target_pos);
-size_t		pb_cost(t_data *stacks, size_t a_pos);
-size_t		best_to_top(t_move *move);
-size_t		get_target_pos(t_crc_nd *head, int nbr);
-void		get_move(t_move *move);
-void		real_move(t_data *stacks, t_move *move);
-void		theoretic_move(t_move *move);
-
 int			is_sorted(t_crc_nd *head, int ascending, int skip_empty);
-void		print_list(t_crc_nd *head);
 
+void		print_list(t_crc_nd *head);
 t_crc_nd	*intitialize_stack(int *nbrs, size_t value_count);
 t_crc_nd	*circular_list_init(size_t node_count);
 void		free_list(t_crc_nd **lst, size_t node_count);
-void		move_constructor(t_move *move, t_data *stacks);
 
+size_t		get_max_value_i(t_crc_nd *head);
 t_crc_nd	*get_next_valued(t_crc_nd *head, t_crc_nd *start, int head_start);
 t_crc_nd	*get_prev_valued(t_crc_nd *start);
 t_crc_nd	*get_last_valued(t_crc_nd *head);
 t_crc_nd	*get_i(t_crc_nd *head, size_t i);
-size_t		get_max_i(t_crc_nd *head);
-size_t		get_min_i(t_crc_nd *head);
 
 void		sa(t_data *stacks, int write_instruction);
 void		sb(t_data *stacks, int write_instruction);

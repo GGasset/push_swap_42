@@ -1,22 +1,21 @@
-# **************************************************************************** #
+#******************************************************************************#
 #                                                                              #
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ggasset- <ggasset-@student.42.fr>          +#+  +:+       +#+         #
+#    By: ggasset- <ggasset-@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/02 12:49:28 by ggasset-          #+#    #+#              #
-#    Updated: 2025/01/13 18:40:39 by ggasset-         ###   ########.fr        #
+#    Updated: 2025/01/17 12:50:39 by ggasset-         ###   ########.fr        #
 #                                                                              #
-# **************************************************************************** #
+#******************************************************************************#
 
 NAME=push_swap
 
 libft_NAME=./libft/libft.a
 ARCHIVES= ${libft_NAME}
 
-C_FILES= main.c turkish.c turk_utils.c turkish_end_game.c cost.c args.c init.c utils.c p.c r.c rr.c s.c
-O_FILES= main.o turkish.o turk_utils.o turkish_end_game.o cost.o args.o init.o utils.o p.o r.o rr.o s.o
+O_FILES= main.o sort_utils.o k_path.o args.o init.o utils.o p.o r.o rr.o s.o
 
 CC_SECURITY_FLAGS= -Wall -Wextra -Werror
 CC_FLAGS= -g #-fanalyzer

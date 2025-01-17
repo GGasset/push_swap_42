@@ -1,16 +1,33 @@
-/* ************************************************************************** */
+/******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ggasset- <ggasset-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ggasset- <ggasset-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 15:02:26 by ggasset-          #+#    #+#             */
-/*   Updated: 2025/01/11 16:41:47 by ggasset-         ###   ########.fr       */
+/*   Updated: 2025/01/17 13:34:47 by ggasset-         ###   ########.fr       */
 /*                                                                            */
-/* ************************************************************************** */
+/******************************************************************************/
 
 #include "push_swap.h"
+
+void	print_list(t_crc_nd *head)
+{
+	t_crc_nd	*iter;
+	int			i;
+
+	iter = head;
+	i = 0;
+	while (iter->contains_val && (iter != head || !i))
+	{
+		ft_putnbr_fd(iter->val, 1);
+		ft_putstr_fd("\n", 1);
+		iter = iter->next;
+		i++;
+	}
+	ft_putstr_fd("\n", 1);
+}
 
 int	main(int argc, char *argv[])
 {
@@ -29,10 +46,14 @@ int	main(int argc, char *argv[])
 	stacks.a_size = argc - 1;
 	stacks.b = circular_list_init(argc - 1);
 	free(nbrs);
-	mech_turkish(&stacks);
-	print_list(stacks.a);
-	ft_putendl_fd("\n", 1);
+	k1(&stacks);
+	k2(&stacks);
+	ft_putnbr_fd(is_sorted(stacks.a, TRUE, FALSE), 1);
+	ft_putendl_fd("", 1);
 	ft_putnbr_fd(stacks.mov_count, 1);
+	ft_putendl_fd("\n\n", 1);
+	print_list(stacks.a);
+	ft_putendl_fd("\n\n", 1);
 	tmp_pntr = stacks.a;
 	free_list(&tmp_pntr, argc - 1);
 	tmp_pntr = stacks.b;

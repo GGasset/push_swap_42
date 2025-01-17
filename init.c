@@ -1,16 +1,38 @@
-/* ************************************************************************** */
+/******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ggasset- <ggasset-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ggasset- <ggasset-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 16:17:46 by ggasset-          #+#    #+#             */
-/*   Updated: 2025/01/13 16:58:35 by ggasset-         ###   ########.fr       */
+/*   Updated: 2025/01/17 11:24:53 by ggasset-         ###   ########.fr       */
 /*                                                                            */
-/* ************************************************************************** */
+/******************************************************************************/
 
 #include "push_swap.h"
+
+static void	set_sorted_pos(t_crc_nd *stack, int *nbrs, size_t value_count)
+{
+	int		*nbrs_cp;
+	size_t	j;
+	size_t	i;
+
+	nbrs_cp = malloc(value_count * sizeof(int));
+	ft_memcpy(nbrs_cp, nbrs, value_count * sizeof(int));
+	bubble_sort(nbrs_cp, value_count, TRUE);
+	i = 0;
+	while (i < value_count)
+	{
+		j = 0;
+		while (stack->val != nbrs_cp[j])
+			j++;
+		stack->sorted_i = j;
+		stack = stack->next;
+		i++;
+	}
+	free(nbrs_cp);
+}
 
 t_crc_nd	*intitialize_stack(int *nbrs, size_t value_count)
 {
@@ -30,6 +52,7 @@ t_crc_nd	*intitialize_stack(int *nbrs, size_t value_count)
 		tmp = tmp->next;
 		i++;
 	}
+	set_sorted_pos(stack, nbrs, value_count);
 	return (stack);
 }
 
@@ -80,12 +103,4 @@ void	free_list(t_crc_nd **lst, size_t node_count)
 		i++;
 	}
 	*lst = 0;
-}
-
-void	move_constructor(t_move *move, t_data *stacks)
-{
-	move->a_len = stacks->a_size;
-	move->b_len = stacks->b_size;
-	move->median_a = stacks->a_size / 2;
-	move->median_b = stacks->b_size / 2;
 }
