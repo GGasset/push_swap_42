@@ -1,27 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sqrt.c                                          :+:      :+:    :+:   */
+/*   ft_get_split_count.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggasset- <ggasset-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/17 11:34:00 by ggasset-          #+#    #+#             */
-/*   Updated: 2025/01/29 15:11:15 by ggasset-         ###   ########.fr       */
+/*   Created: 2025/01/30 13:36:42 by ggasset-          #+#    #+#             */
+/*   Updated: 2025/01/30 14:47:17 by ggasset-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_sqrt(int x)
+size_t	ft_get_split_count(char **split_out)
 {
-	int	i;
+	size_t	out;
 
-	if (x <= 0)
+	if (!split_out)
 		return (0);
-	if (x < 4)
-		return (1);
-	i = 2;
-	while (i * i < x)
-		i++;
-	return (i - 1);
+	out = 0;
+	while (split_out[out])
+		out++;
+	return (out);
 }

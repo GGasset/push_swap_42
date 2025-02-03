@@ -1,27 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sqrt.c                                          :+:      :+:    :+:   */
+/*   ft_expand_argv.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggasset- <ggasset-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/17 11:34:00 by ggasset-          #+#    #+#             */
-/*   Updated: 2025/01/29 15:11:15 by ggasset-         ###   ########.fr       */
+/*   Created: 2025/01/30 13:47:44 by ggasset-          #+#    #+#             */
+/*   Updated: 2025/01/30 15:20:03 by ggasset-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_sqrt(int x)
+char	**ft_expand_argv(int *argc, char **argv, char *separator, int split_by)
 {
-	int	i;
+	char	*tmp;
 
-	if (x <= 0)
+	tmp = ft_argv_join(argv, separator, FALSE);
+	if (!tmp)
 		return (0);
-	if (x < 4)
-		return (1);
-	i = 2;
-	while (i * i < x)
-		i++;
-	return (i - 1);
+	argv = ft_split(tmp, (char)split_by);
+	*argc = ft_get_split_count(argv);
+	free(tmp);
+	return (argv);
 }
