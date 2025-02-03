@@ -1,14 +1,14 @@
-/******************************************************************************/
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ggasset- <ggasset-@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: ggasset- <ggasset-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 17:50:06 by ggasset-          #+#    #+#             */
-/*   Updated: 2025/01/17 13:43:20 by ggasset-         ###   ########.fr       */
+/*   Updated: 2025/01/30 16:53:55 by ggasset-         ###   ########.fr       */
 /*                                                                            */
-/******************************************************************************/
+/* ************************************************************************** */
 
 #include "push_swap.h"
 
@@ -68,20 +68,23 @@ t_crc_nd	*get_i(t_crc_nd *head, size_t i)
 	return (out);
 }
 
-size_t	get_max_value_i(t_crc_nd *head)
+size_t	get_max_value_i(t_crc_nd *head, int rev)
 {
 	int			max_value;
 	size_t		max_i;
 	t_crc_nd	*iter;
 	size_t		i;
 
+	rev = rev != 0;
 	iter = head;
 	max_value = -2147483648;
+	if (rev)
+		max_value = 2147483647;
 	max_i = 0;
 	i = 0;
 	while ((iter != head || !i) && iter->contains_val)
 	{
-		if (iter->val > max_value)
+		if ((iter->val > max_value) * !rev || (iter->val < max_value) * rev)
 		{
 			max_i = i;
 			max_value = iter->val;

@@ -1,14 +1,14 @@
-/******************************************************************************/
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ggasset- <ggasset-@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: ggasset- <ggasset-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 15:02:26 by ggasset-          #+#    #+#             */
-/*   Updated: 2025/01/17 13:34:47 by ggasset-         ###   ########.fr       */
+/*   Updated: 2025/01/30 17:02:12 by ggasset-         ###   ########.fr       */
 /*                                                                            */
-/******************************************************************************/
+/* ************************************************************************** */
 
 #include "push_swap.h"
 
@@ -35,10 +35,10 @@ int	main(int argc, char *argv[])
 	t_data		stacks;
 	t_crc_nd	*tmp_pntr;
 
-	nbrs = parse_args(argc, argv);
+	nbrs = parse_args(&argc, argv);
 	if (!nbrs)
 	{
-		ft_putendl_fd("Error", 2);
+		write(2, "Error\n", 7 * (argc > 1));
 		return (0);
 	}
 	ft_bzero(&stacks, sizeof(t_data));
@@ -46,14 +46,8 @@ int	main(int argc, char *argv[])
 	stacks.a_size = argc - 1;
 	stacks.b = circular_list_init(argc - 1);
 	free(nbrs);
-	k1(&stacks);
-	k2(&stacks);
-	ft_putnbr_fd(is_sorted(stacks.a, TRUE, FALSE), 1);
-	ft_putendl_fd("", 1);
-	ft_putnbr_fd(stacks.mov_count, 1);
-	ft_putendl_fd("\n\n", 1);
-	print_list(stacks.a);
-	ft_putendl_fd("\n\n", 1);
+	if (!is_sorted(stacks.a, TRUE, FALSE))
+		sort(&stacks);
 	tmp_pntr = stacks.a;
 	free_list(&tmp_pntr, argc - 1);
 	tmp_pntr = stacks.b;

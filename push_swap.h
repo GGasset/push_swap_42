@@ -1,14 +1,14 @@
-/******************************************************************************/
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ggasset- <ggasset-@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: ggasset- <ggasset-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 18:33:45 by ggasset-          #+#    #+#             */
-/*   Updated: 2025/01/17 13:24:26 by ggasset-         ###   ########.fr       */
+/*   Updated: 2025/01/31 12:44:52 by ggasset-         ###   ########.fr       */
 /*                                                                            */
-/******************************************************************************/
+/* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
@@ -35,9 +35,9 @@ typedef struct s_crc_nd
 {
 	struct s_crc_nd	*next;
 	struct s_crc_nd	*prev;
-	int			sorted_i;
-	int			val;
-	char		contains_val;
+	int				sorted_i;
+	int				val;
+	char			contains_val;
 }		t_crc_nd;
 
 typedef struct s_data
@@ -50,9 +50,10 @@ typedef struct s_data
 }		t_data;
 
 int			main(int argc, char *argv[]);
-int			*parse_args(int argc, char **argv);
-int			*check_args(int argc, char **argv);
+int			*parse_args(int *argc, char **argv);
+int			check_args(int argc, char **argv);
 
+void		sort(t_data *stacks);
 void		k1(t_data *stacks);
 void		k2(t_data *stacks);
 
@@ -65,7 +66,7 @@ t_crc_nd	*intitialize_stack(int *nbrs, size_t value_count);
 t_crc_nd	*circular_list_init(size_t node_count);
 void		free_list(t_crc_nd **lst, size_t node_count);
 
-size_t		get_max_value_i(t_crc_nd *head);
+size_t		get_max_value_i(t_crc_nd *head, int rev);
 t_crc_nd	*get_next_valued(t_crc_nd *head, t_crc_nd *start, int head_start);
 t_crc_nd	*get_prev_valued(t_crc_nd *start);
 t_crc_nd	*get_last_valued(t_crc_nd *head);

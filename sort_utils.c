@@ -1,14 +1,14 @@
-/******************************************************************************/
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   sort_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ggasset- <ggasset-@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: ggasset- <ggasset-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 09:56:00 by ggasset-          #+#    #+#             */
-/*   Updated: 2025/01/17 11:33:11 by ggasset-         ###   ########.fr       */
+/*   Updated: 2025/01/29 15:09:56 by ggasset-         ###   ########.fr       */
 /*                                                                            */
-/******************************************************************************/
+/* ************************************************************************** */
 
 #include "push_swap.h"
 
@@ -66,9 +66,9 @@ void	sort_three(t_data *stacks)
 
 void	bubble_sort(int *nbrs, size_t n, int ascending)
 {
-	size_t  i;
-	int     sorted;
-	int     tmp;
+	size_t	i;
+	int		sorted;
+	int		tmp;
 
 	ascending = 1 - 2 * !ascending;
 	sorted = FALSE;
